@@ -1,6 +1,6 @@
 # RepoAgent
 
-`@repoagent` is the mention account for [**Repo Agent Connector**]([https://github.com/egil/repoagent](https://github.com/apps/repo-agent-connector), which connects GitHub conversations to native coding-agent sessions. This account represents the connector, not a person.
+`@repoagent` is the mention account for [**Repo Agent Connector**](https://github.com/apps/repo-agent-connector), which connects GitHub conversations to native coding-agent sessions. This account represents the connector, not a person.
 
 In a repository where **Repo Agent Connector** is installed and set up, mention `@repoagent` in a Discussion to reach the agent. The `bridge` CLI forwards the conversation to its native agent session.
 
