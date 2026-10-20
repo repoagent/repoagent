@@ -1,13 +1,25 @@
 # RepoAgent
 
-`@repoagent` is the mention account for [**Repo Agent Connector**](https://github.com/apps/repo-agent-connector), which connects GitHub conversations to native coding-agent sessions. This account represents the connector, not a person.
+Work with a coding agent from GitHub Discussions.
 
-In a repository where **Repo Agent Connector** is installed and set up, mention `@repoagent` in a Discussion to reach the agent. The `bridge` CLI forwards the conversation to its native agent session.
+`@repoagent` is the mention account for **RepoAgent**, which connects GitHub conversations to native coding-agent sessions. The current implementation uses Codex. This account represents the connector, not a person.
 
-Replies and 👀 receipts are published by the configured **GitHub App**, **Repo Agent Connector**, currently `repo-agent-connector[bot]`. This user account provides the short, recognizable mention handle. A 👀 receipt means the agent accepted the input; it does not mean the work is finished.
+## How it works
 
-The current implementation supports GitHub Discussions. Mentioning this account elsewhere does not automatically start an agent. Issue and pull request support may follow.
+In a repository where [**Repo Agent Connector**](https://github.com/apps/repo-agent-connector) is installed and the bridge is running, mention `@repoagent` in a Discussion, comment, or reply to start a conversation.
 
-Project and documentation: [egil/repoagent](https://github.com/egil/repoagent) — repository access may be required.
+Each Discussion gets its own persistent Codex session, shared across all its comment threads. Follow-up messages continue that session with its existing history. The agent works in the configured workspace, using its normal tools, skills, and repository guidance.
+
+Replies and 👀 receipts come from the GitHub App, currently `repo-agent-connector[bot]`. The `@repoagent` account provides the short mention handle. A 👀 receipt means Codex accepted the input; it does not mean the work is finished.
+
+GitHub Discussions are supported today. Mentions in issues and pull requests do not currently start an agent.
+
+## Set it up
+
+RepoAgent is self-hosted. Run the bridge in Docker with your Codex sign-in and GitHub App installation. The [installation guide](https://github.com/repoagent/controller/blob/main/docs/container-setup.md) covers setup on Windows and Linux, additional skills, and persistent storage.
+
+The bridge can observe Discussions by polling or respond to webhooks. For webhooks, use [your own HTTPS endpoint](https://github.com/repoagent/controller/blob/main/docs/webhooks.md) or a [Cloudflare Quick Tunnel](https://github.com/repoagent/controller/blob/main/docs/quick-tunnel.md) for local development.
+
+Project, documentation, and issue tracker: [**repoagent/controller**](https://github.com/repoagent/controller) — repository access may be required.
 
 For questions about this account, contact [@egil](https://github.com/egil).
